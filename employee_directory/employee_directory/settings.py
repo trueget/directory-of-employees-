@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'employees',
+
+    'django_seed',
 ]
 
 MIDDLEWARE = [
