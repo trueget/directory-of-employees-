@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
-from django.views.generic.detail import DetailView
 from django.views.generic import ListView
 
 from django.views import View
 
 from .models import Employees
 from .forms import EmployeesForm
+
 
 # Create your views here.
 
@@ -32,4 +32,4 @@ class AllWorkersListVew(ListView):
     model = Employees
     template_name = 'all_workers.html'
     context_object_name = 'all_workers'
-    # paginate_by = 500
+    paginate_by = 500
