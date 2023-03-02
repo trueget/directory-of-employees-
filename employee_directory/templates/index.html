@@ -6,43 +6,15 @@
 <br>
 <h2>Форма</h2>
 <br>
-<form method="POST" ">
+<form method="POST">
     {% csrf_token %}
         {{ form }}
-<!--    {{ form.first_name }}-->
-<!--    {{ form.last_name }}-->
-<!--    {{ form.sur_name }}-->
-<!--    {{ form.job_title }}-->
-<!--    {{ form.salary }}-->
-<!--    {{ form.supervisor }}-->
     <button class="btn-comment" type="submit">Отправить</button>
 </form>
 <br>
-<h1>Hello!</h1>
-{% if all_workers %}
-    <table>
-        <tr>
-            <td>ID</td>
-            <td>Имя</td>
-            <td>Фамилия</td>
-            <td>Должность</td>
-            <td>Зарплата</td>
-            <td>Дата приема на работу</td>
-            <td>Руководитель</td>
-        </tr>
-    {% for worker in all_workers %}
-        <tr>
-            <td>{{ worker.id }}</td>
-            <td>{{ worker.first_name }}</td>
-            <td>{{ worker.last_name }}</td>
-            <td>{{ worker.job_title }}</td>
-            <td>{{ worker.salary }}</td>
-            <td>{{ worker.recruitment }}</td>
-            <td>{{ worker.supervisor.first_name }} {{ worker.supervisor.sur_name }} {{ worker.supervisor.last_name }}</td>
-        </tr>
-    {% endfor %}
-    </table>
-{% else %}
-    <p>работников пока нет!</p>
-{% endif %}
+<br>
+
+<a href="{% url 'employees:all_workers' page=1 %}"><h2>Все работники</h2></a>
+<br>
+
 {% endblock data %}

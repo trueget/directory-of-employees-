@@ -18,7 +18,6 @@ class Employees(models.Model):
     last_name = models.CharField(max_length=50)
     job_title = models.CharField(
         choices=JobTitle.choices,
-        # default=JobTitle.number_5,
         max_length=2
     )
     salary = models.IntegerField()
@@ -31,3 +30,6 @@ class Employees(models.Model):
         blank=True,
         null=True
     )
+
+    class Meta:
+        ordering = ['id']

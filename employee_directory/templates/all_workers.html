@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block tittle %}all workers{% endblock tittle %}
+
+{% block data %}
+
+  {% if all_workers %}
+
+      <table>
+          <tr>
+              <td>ID</td>
+              <td>Имя</td>
+              <td>Фамилия</td>
+              <td>Должность</td>
+              <td>Зарплата</td>
+              <td>Дата приема на работу</td>
+              <td>Руководитель</td>
+          </tr>
+      {% for worker in all_workers %}
+          <tr>
+              <td>{{ worker.id }}</td>
+              <td>{{ worker.first_name }}</td>
+              <td>{{ worker.last_name }}</td>
+              <td>{{ worker.job_title }}</td>
+              <td>{{ worker.salary }}</td>
+              <td>{{ worker.recruitment }}</td>
+              <td>{{ worker.supervisor.first_name }} {{ worker.supervisor.sur_name }} {{ worker.supervisor.last_name }}</td>
+          </tr>
+      {% endfor %}
+    </table>
+        {% if is_paginated %}
+            <div class="pagination">
+                <span class="page-links">
+                    {% if page_obj.has_previous %}
+                        <a href="{% url 'employees:all_workers' page=page_obj.previous_page_number %}">предыдущая страница</a>
+                    {% endif %}
+                    <span class="page-current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+                    {% if page_obj.has_next %}
+                        <a href="{% url 'employees:all_workers' page=page_obj.next_page_number %}">следующая страница</a>
+                    {% endif %}
+                </span>
+            </div>
+        {% endif %}
+
+
+  {% else %}
+      <p>Зарегистрированных работников пока нет!</p>
+  {% endif %}
+
+{% endblock data %}
