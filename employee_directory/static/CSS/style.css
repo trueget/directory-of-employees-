@@ -1,0 +1,19 @@
+ .not-border{
+ text-decoration: None;
+ color: #212529;
+ font-family: var(--bs-font-sans-serif);
+ display: block;
+ }
+ .not-border:hover{
+ color: #212529;
+ }
+ .table>:not(caption)>*>* {
+ padding: 0;
+ }
+ .all-place, .not-border{
+ width: 100%;
+ height: 100%;
+ }
+ .all-place{
+ padding: 5px;
+ }

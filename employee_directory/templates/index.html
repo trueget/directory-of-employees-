@@ -3,18 +3,32 @@
 {% block tittle %}index{% endblock tittle %}
 
 {% block data %}
-<br>
-<h2>Форма</h2>
-<br>
-<form method="POST">
-    {% csrf_token %}
-        {{ form }}
-    <button class="btn-comment" type="submit">Отправить</button>
-</form>
-<br>
-<br>
+<h2>Форма для добавления нового сотрудника</h2>
 
-<a href="{% url 'employees:all_workers' page=1 %}"><h2>Все работники</h2></a>
-<br>
+<form method="POST">{% csrf_token %}
+  <div class="mb-3">
+    <label for="id-first_name" class="form-label">Имя сотрудника</label>
+      {{ form.first_name }}
+  </div>
+  <div class="mb-3">
+    <label for="id-last_name" class="form-label">Фамилия сотрудника</label>
+      {{ form.last_name }}
+  </div>
+  <div class="mb-3">
+    <label for="id-job_title" class="form-label">Должность сотрудника</label>
+      {{ form.job_title }}
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Зарплата сотрудника</label>
+      {{ form.salary }}
+  </div>
+  <div class="mb-3">
+    <label for="id-supervisor" class="form-label">Непосредственный руководитель сотрудника</label>
+      {{ form.supervisor }}
+  </div>
+    <button class="btn btn-primary" type="submit">Зарегистрировать сотрудника</button>
+</form>
+
+<a href="{% url 'employees:all_workers' page=1 %}">Все работники</a>
 
 {% endblock data %}

@@ -6,7 +6,6 @@ from django.views import View
 from .models import Employees
 from .forms import EmployeesForm
 
-
 # Create your views here.
 
 
