@@ -24,25 +24,31 @@
               <td><a href="/" class="not-border"><div class="all-place">{{ worker.job_title }}</div></a></td>
               <td><a href="/" class="not-border"><div class="all-place">{{ worker.salary }}</div></a></td>
               <td><a href="/" class="not-border"><div class="all-place">{{ worker.recruitment }}</div></a></td>
-              <td><a href="/" class="not-border"><div class="all-place">{{ worker.supervisor.first_name }} {{ worker.supervisor.sur_name }} {{ worker.supervisor.last_name }}</a></td>
+              <td><a href="/" class="not-border"><div class="all-place">{{ worker.supervisor.first_name }} {{ worker.supervisor.sur_name }} {{ worker.supervisor.last_name }}</div></a></td>
           </tr>
 
       {% endfor %}
     </table>
         {% if is_paginated %}
-            <div class="pagination">
-                <span class="page-links">
+            <nav class="" aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item">
                     {% if page_obj.has_previous %}
-                        <a href="{% url 'employees:all_workers' page=page_obj.previous_page_number %}">предыдущая страница</a>
+                        <a class="page-link" href="{% url 'employees:all_workers' page=page_obj.previous_page_number %}"><<<</a>
+                    {% else %}
+                    <p class="page-link"><<<</p>
                     {% endif %}
-                    <span class="page-current">
-                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                    </span>
+                </li>
+                <li class="page-item"><p class="page-link">{{ page_obj.number }}/{{ page_obj.paginator.num_pages }}</p></li>
+                <li class="page-item">
                     {% if page_obj.has_next %}
-                        <a href="{% url 'employees:all_workers' page=page_obj.next_page_number %}">следующая страница</a>
+                        <a class="page-link" href="{% url 'employees:all_workers' page=page_obj.next_page_number %}">>>></a>
+                    {% else %}
+                    <p class="page-link">>>></p>
                     {% endif %}
-                </span>
-            </div>
+                </li>
+              </ul>
+            </nav>
         {% endif %}
 
 
