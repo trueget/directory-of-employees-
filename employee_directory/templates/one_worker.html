@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block tittle %}one worker{% endblock tittle %}
+
+{% block data %}
+    {% if worker.supervisor %}
+        <a href="{% url 'employees:one_worker' pk=worker.supervisor.id %}"><h2>{{ worker.supervisor.first_name }} {{ worker.supervisor.last_name }}</h2></a>
+    {% else %}
+        <h2>It's main Boss!</h2>
+    {% endif %}
+
+<p>^</p>
+<h3>{{ worker.first_name }} {{ worker.last_name }}</h3>
+<p>^</p>
+{% for subordinate in worker.boss.all %}
+    <a href="{% url 'employees:one_worker' pk=subordinate.id %}"><h4> - {{ subordinate.first_name }} {{ subordinate.last_name }}</h4></a>
+
+{% endfor %}
+
+
+
+{% endblock data %}

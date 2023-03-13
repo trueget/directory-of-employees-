@@ -21,23 +21,23 @@
         <div class="modal-body">
           <form method="POST">{% csrf_token %}
             <div class="mb-3">
-              <label for="id-first_name" class="form-label">Имя сотрудника</label>
+              <label for="id-first_name" class="form-label">Employee name</label>
                 {{ form.first_name }}
             </div>
             <div class="mb-3">
-              <label for="id-last_name" class="form-label">Фамилия сотрудника</label>
+              <label for="id-last_name" class="form-label">Employee last name</label>
                 {{ form.last_name }}
             </div>
             <div class="mb-3">
-              <label for="id-job_title" class="form-label">Должность сотрудника</label>
+              <label for="id-job_title" class="form-label">Employee's position</label>
                 {{ form.job_title }}
             </div>
             <div class="mb-3">
-              <label class="form-label">Зарплата сотрудника</label>
+              <label class="form-label">Employee salary</label>
                 {{ form.salary }}
             </div>
             <div class="mb-3">
-              <label for="id-supervisor" class="form-label">Непосредственный руководитель сотрудника</label>
+              <label for="id-supervisor" class="form-label">Employee's immediate supervisor</label>
                 {{ form.supervisor }}
             </div>
             <div class="modal-footer">
