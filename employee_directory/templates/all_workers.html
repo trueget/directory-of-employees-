@@ -5,9 +5,9 @@
 {% block data %}
     <nav class="navbar bg-body-tertiary">
       <div>
-        <form id="search-form" action="{% url 'employees:all_workers' %}" class="d-flex" role="search" method="post">
+        <form id="search-form" action="{% url 'employees:all_workers' %}" class="d-flex" role="search" method="get">
           {% csrf_token %}
-          <input class="form-control me-2" type="text" placeholder="Search..." aria-label="Search" name="q" id="search">
+          <input class="form-control me-2" type="text" placeholder="Search..." aria-label="Search" name="q">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
@@ -64,9 +64,11 @@
             </nav>
         {% endif %}
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 
   {% else %}
-      <p>Зарегистрированных работников пока нет!</p>
+      <p>No employees found with this name!</p>
   {% endif %}
 
 {% endblock data %}
