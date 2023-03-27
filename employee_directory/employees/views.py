@@ -12,7 +12,7 @@ from django.db.models import Q
 # Create your views here.
 
 
-class INdex(View):
+class Index(View):
     form_class = EmployeesForm
     initial = {'key': 'value'}
     template_name = 'index.html'
@@ -57,31 +57,3 @@ class OneWorker(ListView):
         context = super().get_context_data(**kwargs)
         context['worker'] = Employees.objects.get(id=self.kwargs['pk'])
         return context
-
-
-# def search_workers(request):
-#     search_by = request.GET.get('search_by')
-#     print(search_by)
-#     if search_by:
-#         workers = Employees.objects.filter(Q(first_name__icontains=search_by) | Q(last_name__icontains=search_by))
-#         print('*'*50)
-#         print(workers)
-#         return render(request, 'search_worker.html', {'workers': workers})
-
-
-class SearchView(ListView):
-    model = Employees
-    template_name = 'search.html'
-    paginate_by = 100
-
-    def get_queryset(self):
-        query = self.request.GET.get('q')
-        if query:
-            object_list = Employees.objects.filter(
-                Q(first_name__icontains=query) | Q(last_name__icontains=query)
-            )
-        else:
-            object_list = Employees.objects.all()
-        return object_list
-
-
