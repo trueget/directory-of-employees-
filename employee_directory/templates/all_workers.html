@@ -3,21 +3,22 @@
 {% block tittle %}all workers{% endblock tittle %}
 
 {% block data %}
-
     <nav class="navbar bg-body-tertiary">
-      <div class="container-fluid">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <div>
+        <form id="search-form" action="{% url 'employees:all_workers' %}" class="d-flex" role="search" method="post">
+          {% csrf_token %}
+          <input class="form-control me-2" type="text" placeholder="Search..." aria-label="Search" name="q" id="search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
     </nav>
 
-  {% if all_workers %}
+  {% if object_list %}
+
 
       <table class="table table-striped table-hover">
           <tr>
-              <th scope="col">ID</th>
+              <th id="" scope="col">ID</th>
               <th scope="col">Name</th>
               <th scope="col">Surname</th>
               <th scope="col">Job title</th>
@@ -25,7 +26,7 @@
               <th scope="col">Employment date</th>
               <th scope="col">Supervisor</th>
           </tr>
-      {% for worker in all_workers %}
+      {% for worker in object_list %}
           <tr>
               <th scope="row"><a href="/" class="not-border"><div class="all-place">{{ worker.id }}</div></a></th>
               <td><a href="{% url 'employees:one_worker' pk=worker.id %}" class="not-border"><div class="all-place">{{ worker.first_name }}</div></a></td>
@@ -43,7 +44,9 @@
               <ul class="pagination justify-content-center">
                 <li class="page-item">
                     {% if page_obj.has_previous %}
-                        <a class="page-link" href="{% url 'employees:all_workers' page=page_obj.previous_page_number %}"><<<</a>
+<!--                        <a class="page-link" href="?page=1">&laquo; First</a>-->
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}"><<<</a>
+
                     {% else %}
                     <p class="page-link"><<<</p>
                     {% endif %}
@@ -51,7 +54,8 @@
                 <li class="page-item"><p class="page-link">{{ page_obj.number }}/{{ page_obj.paginator.num_pages }}</p></li>
                 <li class="page-item">
                     {% if page_obj.has_next %}
-                        <a class="page-link" href="{% url 'employees:all_workers' page=page_obj.next_page_number %}">>>></a>
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">>>></a>
+<!--                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>-->
                     {% else %}
                     <p class="page-link">>>></p>
                     {% endif %}

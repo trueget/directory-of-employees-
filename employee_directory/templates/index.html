@@ -4,8 +4,7 @@
 
 {% block data %}
 
-<div class="d-flex flex-column">
-
+<div class="d-flex flex-column three-roads">
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Register a new employee!
@@ -52,5 +51,27 @@
 
   <a class="btn btn-primary mt-2" href="{% url 'employees:all_workers' page=1 %}">All workers</a>
 
+    <nav class="navbar bg-body-tertiary">
+      <div>
+        <form class="d-flex" role="search" method="post">
+          {% csrf_token %}
+          <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="q" id="search">
+          <button class="btn btn-outline-success" type="submit" id="search-submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+
+  <div class="search-worker">
+
+		{% include 'search_worker.html' %}
+    <h1>sjvjvnsjkdv</h1>
+
+  </div>
+
+
 </div>
+
+<a href="{% url 'employees:search' %}"> SEARCH </a>
+
 {% endblock data %}
