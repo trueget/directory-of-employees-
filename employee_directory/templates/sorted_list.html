@@ -1,0 +1,21 @@
+<table class="table table-striped table-hover">
+  <tr>
+      <th id="" scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
+      <th scope="col">Job title</th>
+      <th scope="col">Salary</th>
+      <th scope="col">Employment date</th>
+      <th scope="col">Supervisor</th>
+  </tr>
+{% for worker in object_list %}
+  <tr>
+      <th scope="row"><a href="/" class="not-border"><div class="all-place">{{ worker.id }}</div></a></th>
+      <td><a href="{% url 'employees:one_worker' pk=worker.id %}" class="not-border"><div class="all-place">{{ worker.first_name }}</div></a></td>
+      <td><a href="{% url 'employees:one_worker' pk=worker.id %}" class="not-border"><div class="all-place">{{ worker.last_name }}</div></a></td>
+      <td><a href="{% url 'employees:one_worker' pk=worker.id %}" class="not-border"><div class="all-place">{{ worker.job_title }}</div></a></td>
+      <td><a href="{% url 'employees:one_worker' pk=worker.id %}" class="not-border"><div class="all-place">{{ worker.salary }}</div></a></td>
+      <td><a href="{% url 'employees:one_worker' pk=worker.id %}" class="not-border"><div class="all-place">{{ worker.recruitment }}</div></a></td>
+      <td><a href="{% url 'employees:one_worker' pk=worker.id %}" class="not-border"><div class="all-place">{{ worker.supervisor.first_name }} {{ worker.supervisor.sur_name }} {{ worker.supervisor.last_name }}</div></a></td>
+  </tr>
+{% endfor %}

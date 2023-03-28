@@ -20,3 +20,14 @@
  .three-roads{
  margin-top: 50px;
  }
+ .two-form{
+ display: flex;
+ }
+ .dropdown{
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+ }
+ .navbar{
+    margin: 0 5px;
+ }
